@@ -1,0 +1,9 @@
+{
+  "name": "triemli-abfahrten",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node --check js/application/activity-controller.js && node --check js/domain/location-policy.js && node --check js/domain/activity-policy.js && node --check js/domain/tab-state.js && node --check tests/tab-state-isolation.test.js"
+  }
+}
