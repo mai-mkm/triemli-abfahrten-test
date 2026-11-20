@@ -1,0 +1,3 @@
+export function distanceMeters(a,b){const r=6371000,p=Math.PI/180,dLat=(b.lat-a.lat)*p,dLon=(b.lng-a.lng)*p,x=Math.sin(dLat/2)**2+Math.cos(a.lat*p)*Math.cos(b.lat*p)*Math.sin(dLon/2)**2;return 2*r*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
+export function shouldRefreshNearby(previous,next){if(!previous)return true;if(!Number.isFinite(next.accuracy)||next.accuracy>100)return false;return distanceMeters(previous,next)>=Math.max(25,next.accuracy)}
+export function shouldSwitchStation(current,candidate,now,lastSwitch=0){return !!candidate&&!!current&&candidate.id!==current.id&&current.distance-candidate.distance>=30&&(!lastSwitch||now-lastSwitch>=10000)}
